@@ -21,7 +21,7 @@ __pycache__/
 /media/
 
 # Ignore database files
-/db.sqlite3
+db.sqlite3
 
 # Ignore IDE-specific files
 .vscode/
@@ -31,5 +31,3 @@ __pycache__/
 /local_settings.py
 config/__pycache__
 */__pycache__
-db.sqlite3
-db.sqlite3
