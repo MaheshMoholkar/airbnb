@@ -1,1 +1,35 @@
+# Ignore system files
+*.pyc
+__pycache__/
+*.sqlite3
+
+# Ignore development/build files
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.bak
+*.~*
+
+# Ignore environment files
+.env
+
+# Ignore static files
+/static/
+
+# Ignore media files
+/media/
+
+# Ignore database files
+/db.sqlite3
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore local settings
+/local_settings.py
 config/__pycache__
+*/__pycache__
+db.sqlite3
+db.sqlite3
