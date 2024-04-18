@@ -7,7 +7,12 @@ name = "pypi"
 django = "*"
 
 [dev-packages]
+flake8 = "*"
+black = "*"
 
 [requires]
 python_version = "3.12"
 python_full_version = "3.12.3"
+
+[pipenv]
+allow_prereleases = true
