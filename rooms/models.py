@@ -4,6 +4,55 @@ from core import models as core_models
 from users import models as user_models
 
 
+class AbstractItem(core_models.TimeStampedModel):
+    """Abstract Item"""
+
+    name = models.CharField(max_length=80)
+
+    class Meta:
+        abstract = True
+
+    def __str__(self) -> str:
+        return self.name
+
+
+class RoomType(AbstractItem):
+    """RoomType Object Definition"""
+
+    class Meta:
+        verbose_name = "Room Type"
+        ordering = ["name"]
+
+    pass
+
+
+class Amenity(AbstractItem):
+    """Amenity Object Definition"""
+
+    class Meta:
+        verbose_name_plural = "Amenities"
+
+    pass
+
+
+class Facility(AbstractItem):
+    """Facility Model Definition"""
+
+    class Meta:
+        verbose_name_plural = "Facilities"
+
+    pass
+
+
+class HouseRule(AbstractItem):
+    """HouseRule Model Definition"""
+
+    class Meta:
+        verbose_name = "House Rule"
+
+    pass
+
+
 # Create your models here.
 class Room(core_models.TimeStampedModel):
     """Room Model Definition"""
@@ -22,3 +71,10 @@ class Room(core_models.TimeStampedModel):
     check_out = models.TimeField()
     instant_book = models.BooleanField(default=False)
     host = models.ForeignKey(user_models.User, on_delete=models.CASCADE)
+    room_type = models.ForeignKey(RoomType, on_delete=models.SET_NULL, null=True)
+    amenities = models.ManyToManyField(Amenity, blank=True)
+    facilities = models.ManyToManyField(Facility, blank=True)
+    house_rule = models.ManyToManyField(HouseRule, blank=True)
+
+    def __str__(self) -> str:
+        return self.name
