@@ -18,4 +18,4 @@ class List(core_models.TimeStampedModel):
     def count_rooms(self) -> str:
         return self.rooms.count()
 
-    count_rooms.short_description = "No. of Rooms "
+    count_rooms.short_description = "No. of Rooms"
