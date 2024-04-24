@@ -5,4 +5,8 @@ from . import models
 # Register your models here.
 @admin.register(models.List)
 class ListAdmin(admin.ModelAdmin):
-    pass
+    """List Admin Definition"""
+
+    list_display = ("name", "user", "count_rooms")
+
+    search_fields = ("^name",)

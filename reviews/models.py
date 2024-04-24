@@ -13,8 +13,25 @@ class Reivew(core_models.TimeStampedModel):
     location = models.IntegerField()
     check_in = models.IntegerField()
     value = models.IntegerField()
-    user = models.ForeignKey("users.User", on_delete=models.CASCADE)
-    room = models.ForeignKey("rooms.Room", on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        "users.User", related_name="reviews", on_delete=models.CASCADE
+    )
+    room = models.ForeignKey(
+        "rooms.Room", related_name="reviews", on_delete=models.CASCADE
+    )
 
     def __str__(self) -> str:
         return f"{self.review} - {self.room}"
+
+    def rating_average(self) -> str:
+        avg = (
+            self.accuracy
+            + self.communication
+            + self.clearnliness
+            + self.location
+            + self.check_in
+            + self.value
+        ) / 6
+        return round(avg)
+
+    rating_average.short_description = "Avg."
