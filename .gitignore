@@ -31,3 +31,6 @@ db.sqlite3
 /local_settings.py
 config/__pycache__
 */__pycache__
+
+
+uploads/
