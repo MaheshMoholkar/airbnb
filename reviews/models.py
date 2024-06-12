@@ -3,13 +3,13 @@ from core import models as core_models
 
 
 # Create your models here.
-class Reivew(core_models.TimeStampedModel):
+class Review(core_models.TimeStampedModel):
     """Review Model Definition"""
 
     review = models.TextField()
     accuracy = models.IntegerField()
     communication = models.IntegerField()
-    clearnliness = models.IntegerField()
+    cleanliness = models.IntegerField()
     location = models.IntegerField()
     check_in = models.IntegerField()
     value = models.IntegerField()
@@ -27,7 +27,7 @@ class Reivew(core_models.TimeStampedModel):
         avg = (
             self.accuracy
             + self.communication
-            + self.clearnliness
+            + self.cleanliness
             + self.location
             + self.check_in
             + self.value

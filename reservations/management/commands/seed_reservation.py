@@ -1,11 +1,10 @@
-import datetime
 from typing import Any
 import random
-from datetime import timedelta
+from datetime import timedelta, datetime
 from django.core.management.base import BaseCommand, CommandParser
 from django_seed import Seed
 from reservations import models as reservation_models
-from users.models import models as user_models
+from users import models as user_models
 from rooms import models as room_models
 
 NAME = "reservations"
@@ -33,7 +32,7 @@ class Command(BaseCommand):
                 "room": lambda x: random.choice(rooms),
                 "check_in": lambda x: datetime.now(),
                 "check_out": lambda x: datetime.now()+timedelta(
-                    days=random.random.randint(3, 25)
+                    days=random.randint(3, 25)
                     )
             },
         )

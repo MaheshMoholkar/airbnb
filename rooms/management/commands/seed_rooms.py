@@ -3,7 +3,8 @@ import random
 from django.core.management.base import BaseCommand, CommandParser
 from django.contrib.admin.utils import flatten
 from django_seed import Seed
-from rooms.models import RoomType, Room, room_models
+from rooms.models import RoomType, Room
+from rooms import models as room_models
 from users.models import User
 
 
@@ -34,7 +35,6 @@ class Command(BaseCommand):
                 "baths": lambda x: random.randint(0, 5),
             },
         )
-        seeder.execute()
 
         created_photos = seeder.execute()
         created_clean = flatten(list(created_photos.values()))

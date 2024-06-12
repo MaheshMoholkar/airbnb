@@ -2,8 +2,8 @@ from typing import Any
 import random
 from django.core.management.base import BaseCommand, CommandParser
 from django_seed import Seed
-from reviews.models import models as review_models
-from users.models import models as user_models
+from reviews import models as review_models
+from users import models as user_models
 from rooms import models as room_models
 
 
