@@ -1,10 +1,9 @@
-# from django.shortcuts import redirect
 # from django.core.paginator import Paginator, EmptyPage
 
-from pytz import timezone
+from django.urls import reverse
 from . import models
-from django.views.generic import ListView
-from django.shortcuts import render
+from django.views.generic import ListView, DetailView
+from django.shortcuts import render, redirect
 
 
 class HomeView(ListView):
@@ -22,14 +21,22 @@ class HomeView(ListView):
     #     now = timezone.now()
     #     context["now"] = now
     #     return context
+
+class RoomDetail(DetailView):
     
+    """ RoomDetail Definition """
 
-def room_detail(request, pk):
-
-    return render(request, "rooms/detail.html")
+    model = models.Room
 
 
-# Create your views here.
+
+# def room_detail(request, pk):
+#     try:
+#         room = models.Room.objects.get(pk=pk)
+#         return render(request, "rooms/detail.html", {"room":room})
+#     except models.Room.DoesNotExist :
+#         return redirect(reverse("core:home"))
+
 # def all_rooms(request):
 #     page = request.GET.get("page", 1)
 #     room_list = models.Room.objects.all()
